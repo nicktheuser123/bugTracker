@@ -4,147 +4,9 @@ const htmlContent = `
                 <!DOCTYPE html>
                 <html lang="en">
                 <head>
-                    <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <title>Bug Reporter</title>
-                    <style>
-                        #bug-report-tab {
-                            position: fixed;
-                            right: 0;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            background-color: #FF6737;
-                            color: white;
-                            padding: 10px;
-                            cursor: pointer;
-                            z-index: 1000;
-                        }
-
-                        #bug-report {
-                            position: fixed;
-                            right: -320px;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            width: 320px;
-                            height: 500px;
-                            background: white;
-                            border: 1px solid #ccc;
-                            padding: 10px;
-                            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                            transition: right 0.3s ease-in-out;
-                            z-index: 999;
-                        }
-
-                        #bug-report.open {
-                            right: 0;
-                        }
-
-                        #bug-report textarea {
-                            width: 100%;
-                            height: 100px;
-                            margin-bottom: 10px;
-                        }
-
-                        #bug-report img {
-                            display: block;
-                            width: 100%;
-                            height: auto;
-                            margin-bottom: 10px;
-                            border: 2px solid #FF6737;
-                        }
-
-                        #send-report, #edit-screenshot {
-                            background-color: #FF6737;
-                            color: white;
-                            border: none;
-                            padding: 10px;
-                            cursor: pointer;
-                            width: 100%;
-                            margin-bottom: 10px;
-                        }
-
-                        #annotation-modal {
-                            display: none;
-                            position: fixed;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            background: rgba(255, 255, 255, 1);
-                            justify-content: center;
-                            align-items: center;
-                            z-index: 10000;
-                        }
-
-                        #annotation-modal.open {
-                            display: flex;
-                        }
-
-                        #annotation-editor {
-                            background: white;
-                            padding: 20px;
-                            position: relative;
-                            border: 2px solid #FF6737;
-                            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                            width: 80%;
-                            height: 80%;
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                        }
-
-                        #annotation-canvas {
-                            border: 2px solid #FF6737;
-                            background: white;
-                            width: 100%;
-                            height: 100%;
-                        }
-
-                        #logo {
-                            display: block;
-                            margin: 0 auto 10px;
-                            width: 50px;
-                            height: 50px;
-                        }
-
-                        .tool-icon {
-                            width: 30px;
-                            height: 30px;
-                            margin: 5px;
-                            cursor: pointer;
-                        }
-
-                        #tools {
-                            display: flex;
-                            justify-content: center;
-                            position: sticky;
-                            top: 0;
-                            background: white;
-                            z-index: 1001;
-                            padding: 10px 0;
-                            border-bottom: 2px solid #FF6737;
-                            width: 100%;
-                        }
-
-                        #save-annotations {
-                            background-color: #FF6737;
-                            color: white;
-                            border: none;
-                            padding: 10px;
-                            cursor: pointer;
-                            margin-left: 10px;
-                            margin-right: 10px;
-                        }
-
-                        #delete-item {
-                            background-color: #FF6737;
-                            color: white;
-                            border: none;
-                            padding: 10px;
-                            cursor: pointer;
-                            margin-left: 10px;
-                            margin-right: 10px;
-                        }
-                    </style>
+                    
                 </head>
                 <body>
                     <div id="bug-report-tab">Report Bug</div>
@@ -289,10 +151,152 @@ const htmlContent = `
                 </body>
                 </html>
                 `
+
+                const cssContent = `
+                <style>
+                        #bug-report-tab {
+                            position: fixed;
+                            right: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            background-color: #FF6737;
+                            color: white;
+                            padding: 10px;
+                            cursor: pointer;
+                            z-index: 1000;
+                        }
+
+                        #bug-report {
+                            position: fixed;
+                            right: -320px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: 320px;
+                            height: 500px;
+                            background: white;
+                            border: 1px solid #ccc;
+                            padding: 10px;
+                            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                            transition: right 0.3s ease-in-out;
+                            z-index: 999;
+                        }
+
+                        #bug-report.open {
+                            right: 0;
+                        }
+
+                        #bug-report textarea {
+                            width: 100%;
+                            height: 100px;
+                            margin-bottom: 10px;
+                        }
+
+                        #bug-report img {
+                            display: block;
+                            width: 100%;
+                            height: auto;
+                            margin-bottom: 10px;
+                            border: 2px solid #FF6737;
+                        }
+
+                        #send-report, #edit-screenshot {
+                            background-color: #FF6737;
+                            color: white;
+                            border: none;
+                            padding: 10px;
+                            cursor: pointer;
+                            width: 100%;
+                            margin-bottom: 10px;
+                        }
+
+                        #annotation-modal {
+                            display: none;
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(255, 255, 255, 1);
+                            justify-content: center;
+                            align-items: center;
+                            z-index: 10000;
+                        }
+
+                        #annotation-modal.open {
+                            display: flex;
+                        }
+
+                        #annotation-editor {
+                            background: white;
+                            padding: 20px;
+                            position: relative;
+                            border: 2px solid #FF6737;
+                            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                            width: 80%;
+                            height: 80%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+
+                        #annotation-canvas {
+                            border: 2px solid #FF6737;
+                            background: white;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        #logo {
+                            display: block;
+                            margin: 0 auto 10px;
+                            width: 50px;
+                            height: 50px;
+                        }
+
+                        .tool-icon {
+                            width: 30px;
+                            height: 30px;
+                            margin: 5px;
+                            cursor: pointer;
+                        }
+
+                        #tools {
+                            display: flex;
+                            justify-content: center;
+                            position: sticky;
+                            top: 0;
+                            background: white;
+                            z-index: 1001;
+                            padding: 10px 0;
+                            border-bottom: 2px solid #FF6737;
+                            width: 100%;
+                        }
+
+                        #save-annotations {
+                            background-color: #FF6737;
+                            color: white;
+                            border: none;
+                            padding: 10px;
+                            cursor: pointer;
+                            margin-left: 10px;
+                            margin-right: 10px;
+                        }
+
+                        #delete-item {
+                            background-color: #FF6737;
+                            color: white;
+                            border: none;
+                            padding: 10px;
+                            cursor: pointer;
+                            margin-left: 10px;
+                            margin-right: 10px;
+                        }
+                    </style>
+                `
                 // Create a new div element and set its innerHTML to the HTML content and CSS
     const container = document.createElement('div');
-    container.innerHTML = htmlContent;
-    //container.innerHTML = htmlContent + cssContent;
+    container.innerHTML = htmlContent + cssContent;
+    
     // Append the content to the document's body
     document.body.appendChild(container);
 }        
