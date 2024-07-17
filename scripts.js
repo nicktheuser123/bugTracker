@@ -1,6 +1,6 @@
 
 function createBugTracker() {
-const html = `    
+const htmlContent = `    
                 <!DOCTYPE html>
                 <html lang="en">
                 <head>
